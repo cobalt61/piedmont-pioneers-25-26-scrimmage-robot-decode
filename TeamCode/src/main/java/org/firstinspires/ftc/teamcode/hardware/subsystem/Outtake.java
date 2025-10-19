@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.hardware.subsystem;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
@@ -59,32 +60,7 @@ public class Outtake implements SubSystem {
             newActions.add(stopOuttake());
         }
 
-/*
-        // Handle joystick controls
-        double leftStickY = -config.gamepad2.left_stick_y;
-        double rightStickY = -config.gamepad2.right_stick_y;
 
-        if (leftStickY >= JOYSTICK_THRESHOLD && position != LiftPosition.TOP_BASKET) {
-            direction = LiftDirection.UP;
-            newActions.add(bucket());
-        } else if (leftStickY <= -JOYSTICK_THRESHOLD && position != LiftPosition.BOTTOM) {
-            direction = LiftDirection.DOWN;
-            newActions.add(down());
-        }
-
-        if (rightStickY >= JOYSTICK_THRESHOLD && position != LiftPosition.TOP_BAR) {
-            direction = LiftDirection.UP;
-            newActions.add(bar());
-        } else if (rightStickY <= -JOYSTICK_THRESHOLD && position != LiftPosition.BOTTOM) {
-            if (position != LiftPosition.CLIPPING) {
-                direction = LiftDirection.DOWN;
-                newActions.add(clip());
-            } else {
-                direction = LiftDirection.DOWN;
-                newActions.add(down());
-            }
-        }
-        */
 
         // Add telemetry data
         addTelemetryData();
@@ -119,3 +95,4 @@ public class Outtake implements SubSystem {
         outtake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 }
+*/

@@ -7,18 +7,7 @@ public class Globals {
         All fields should be public, static, and final.
      */
 
-    public static class Intake {
 
-        public static final String INTAKE_MOTOR = "intake";
-
-        public static final double POWER_OFF = 0;
-        public static final double POWER_ON = 1;
-
-//        public static final int SENSOR_RED_THRESHOLD = 300;
-//        public static final int SENSOR_YELLOW_THRESHOLD_RED = 300;
-//        public static final int SENSOR_YELLOW_THRESHOLD_GREEN = 300;
-//        public static final int SENSOR_BLUE_THRESHOLD = 300;
-    }
 
     public static final class Outtake {
 

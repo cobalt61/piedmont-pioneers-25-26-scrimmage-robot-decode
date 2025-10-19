@@ -6,15 +6,12 @@ import com.acmerobotics.roadrunner.Action;
 
 import org.firstinspires.ftc.teamcode.hardware.robot.enums.GameStage;
 import org.firstinspires.ftc.teamcode.hardware.subsystem.Drive;
-import org.firstinspires.ftc.teamcode.hardware.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.hardware.subsystem.Outtake;
 import org.firstinspires.ftc.teamcode.hardware.subsystem.SubSystem;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public abstract class Robot {
     // Config class to all hardware controls
