@@ -1,4 +1,4 @@
-/*
+
 package org.firstinspires.ftc.teamcode.hardware.subsystem;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
@@ -95,4 +95,3 @@ public class Outtake implements SubSystem {
         outtake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 }
-*/
