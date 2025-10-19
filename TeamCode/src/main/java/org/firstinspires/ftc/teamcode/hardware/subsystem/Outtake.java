@@ -83,7 +83,7 @@ public class Outtake implements SubSystem {
     public InstantAction stopOuttake() {
         return new InstantAction(() -> {
             outtake.setPower(Globals.Outtake.POWER_OFF);
-            state = OuttakeState.SPINNING;
+            state = OuttakeState.STOPPED;
         });
     }
 
