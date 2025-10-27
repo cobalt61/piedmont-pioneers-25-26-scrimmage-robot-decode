@@ -26,7 +26,6 @@ public abstract class Robot {
     private List<Action> runningActions = new ArrayList<>();
 
     public Outtake outtake;
-    public Intake intake;
 
     public List<Action> getRunningActions() {
         return new ArrayList<>(runningActions);
@@ -37,11 +36,9 @@ public abstract class Robot {
         config = cfg;
 
         subsystems.add(new Drive(config));
-        subsystems.add(new Intake(config));
         subsystems.add(new Outtake(config));
 
-        intake = (Intake) subsystems.get(1);
-        outtake = (Outtake) subsystems.get(2);
+        outtake = (Outtake) subsystems.get(1);
 
         dashboard = FtcDashboard.getInstance();
     }

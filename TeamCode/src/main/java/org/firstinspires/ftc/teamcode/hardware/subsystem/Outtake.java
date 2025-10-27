@@ -41,7 +41,7 @@ public class Outtake implements SubSystem {
         outtake = config.hardwareMap.get(DcMotor.class, Globals.Outtake.OUTTAKE_MOTOR);
 
         // Set motor directions
-        outtake.setDirection(DcMotor.Direction.REVERSE);
+        outtake.setDirection(DcMotor.Direction.FORWARD);
 
         // Reset encoders and set motor modes
         resetMotors();
@@ -54,8 +54,8 @@ public class Outtake implements SubSystem {
     public List<Action> update() {
         List<Action> newActions = new ArrayList<>();
 
-        if (config.gamepad2.right_trigger >= 0.1) {
-           newActions.add(startOuttake(config.gamepad2.right_trigger));
+        if (config.gamepad1.right_trigger >= 0.1) {
+           newActions.add(startOuttake(config.gamepad1.right_trigger));
         } else{
             newActions.add(stopOuttake());
         }
