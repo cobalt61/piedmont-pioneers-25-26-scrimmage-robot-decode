@@ -13,6 +13,9 @@ public class Globals {
         public static final String OUTTAKE_MOTOR = "outtakeMotor";
         public static final String OUTTAKE_SERVO = "outtakeServo";
         public static final double POWER_OFF = 0;
+
+        public static final double OUTTAKE_SERVO_OPEN = 1;
+        public static final double OUTTAKE_SERVO_CLOSED = 0;
     }
 
     public static final class Drive {

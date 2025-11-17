@@ -82,6 +82,7 @@ public class Outtake implements SubSystem {
         return new InstantAction(() -> {
              outtake.setPower(speed);
              state = OuttakeState.SPINNING;
+             servo.setPosition(Globals.Outtake.OUTTAKE_SERVO_OPEN);
         });
     }
 
@@ -89,6 +90,7 @@ public class Outtake implements SubSystem {
         return new InstantAction(() -> {
             outtake.setPower(Globals.Outtake.POWER_OFF);
             state = OuttakeState.STOPPED;
+            servo.setPosition(Globals.Outtake.OUTTAKE_SERVO_CLOSED);
         });
     }
 
