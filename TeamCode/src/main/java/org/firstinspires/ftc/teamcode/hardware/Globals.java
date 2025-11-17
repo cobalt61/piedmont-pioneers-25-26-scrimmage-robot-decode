@@ -12,6 +12,7 @@ public class Globals {
     public static final class Outtake {
 
         public static final String OUTTAKE_MOTOR = "outtakeMotor";
+        public static final String OUTTAKE_SERVO = "outtakeServo";
         public static final double POWER_OFF = 0;
     }
 

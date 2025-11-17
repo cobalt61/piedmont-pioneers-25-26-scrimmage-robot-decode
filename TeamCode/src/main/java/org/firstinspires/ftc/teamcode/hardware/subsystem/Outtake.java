@@ -5,7 +5,9 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.InstantAction;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.hardware.robot.Config;
 import org.firstinspires.ftc.teamcode.hardware.Globals;
@@ -27,6 +29,7 @@ public class Outtake implements SubSystem {
 
     private final Config config;
     private DcMotor outtake;
+    private Servo servo;
     private DigitalChannel switchV;
 
     OuttakeState state;
@@ -39,9 +42,11 @@ public class Outtake implements SubSystem {
     @Override
     public void init() {
         outtake = config.hardwareMap.get(DcMotor.class, Globals.Outtake.OUTTAKE_MOTOR);
+        servo = config.hardwareMap.get(Servo.class, Globals.Outtake.OUTTAKE_SERVO);
 
         // Set motor directions
         outtake.setDirection(DcMotor.Direction.REVERSE);
+        servo.setDirection(Servo.Direction.REVERSE);
 
         // Reset encoders and set motor modes
         resetMotors();
