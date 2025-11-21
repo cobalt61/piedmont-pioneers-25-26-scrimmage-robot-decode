@@ -27,14 +27,10 @@ package org.firstinspires.ftc.teamcode.hardware.robot;/* Copyright (c) 2017 FIRS
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardware.Globals;
-import org.firstinspires.ftc.teamcode.hardware.robot.Config;
-import org.firstinspires.ftc.teamcode.hardware.subsystem.Outtake;
 
 /*
  * This OpMode illustrates the concept of driving a path based on time.
@@ -55,10 +51,10 @@ import org.firstinspires.ftc.teamcode.hardware.subsystem.Outtake;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="Autonomous- Blue", group="Robot")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="Autonomous- Red", group="Robot")
 
 
-public class AutonomousBlue {
+public class AutonomousRed {
 
     /* Declare OpMode members. */
     protected DcMotor leftFrontDrive;
@@ -71,7 +67,7 @@ public class AutonomousBlue {
 
 
 
-    public AutonomousBlue(Config config) {
+    public AutonomousRed(Config config) {
         this.config = config;
         outtakeMotor = config.hardwareMap.get(DcMotor.class, Globals.Outtake.OUTTAKE_MOTOR);
 
@@ -152,10 +148,11 @@ public class AutonomousBlue {
         outtakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
     public void runOpMode(){
-    Forward(1800);
-    Left(500);
-    runOuttake(2000);
-
+        Forward(1000);
+        Right(500);
+        Forward(500);
+        Left(600);
+        runOuttake(2000);
     }
 }
 
