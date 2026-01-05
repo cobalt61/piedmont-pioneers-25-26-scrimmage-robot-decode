@@ -1,6 +1,7 @@
 
 package org.firstinspires.ftc.teamcode.hardware.subsystem;
 
+
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.InstantAction;
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardware.robot.Config;
 import org.firstinspires.ftc.teamcode.hardware.Globals;
@@ -28,10 +30,10 @@ public class Outtake implements SubSystem {
     // Constants for joystick thresholds
 
     private final Config config;
-    private DcMotor outtake;
+    private DcMotor outtake,buffer;
     private Servo servo;
     private DigitalChannel switchV;
-
+    private ElapsedTime timer = new ElapsedTime();
     OuttakeState state;
 
 
@@ -42,11 +44,17 @@ public class Outtake implements SubSystem {
     @Override
     public void init() {
         outtake = config.hardwareMap.get(DcMotor.class, Globals.Outtake.OUTTAKE_MOTOR);
-        servo = config.hardwareMap.get(Servo.class, Globals.Outtake.OUTTAKE_SERVO);
+        buffer = config.hardwareMap.get(DcMotor.class, Globals.Outtake.BUFFER);
+        //servo = config.hardwareMap.get(Servo.class, Globals.Outtake.OUTTAKE_SERVO);
 
         // Set motor directions
         outtake.setDirection(DcMotor.Direction.REVERSE);
-        servo.setDirection(Servo.Direction.REVERSE);
+        buffer.setDirection(DcMotor.Direction.FORWARD);
+        buffer.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        // How to use motors with encoders
+        /* outtake2.setTargetPosition(200); // 200 here is the amount of encoder ticks
+        outtake2.setPower(1);*/
+       // servo.setDirection(Servo.Direction.REVERSE);
 
         // Reset encoders and set motor modes
         resetMotors();
@@ -61,6 +69,8 @@ public class Outtake implements SubSystem {
 
         if (config.gamepad2.right_trigger >= 0.1) {
            newActions.add(startOuttake(config.gamepad2.right_trigger));
+        } else if (config.gamepad2.right_bumper) {
+            newActions.add(runBuffer());
         } else{
             newActions.add(stopOuttake());
         }
@@ -82,7 +92,7 @@ public class Outtake implements SubSystem {
         return new InstantAction(() -> {
              outtake.setPower(speed);
              state = OuttakeState.SPINNING;
-             servo.setPosition(Globals.Outtake.OUTTAKE_SERVO_OPEN);
+            // servo.setPosition(Globals.Outtake.OUTTAKE_SERVO_OPEN);
         });
     }
 
@@ -90,7 +100,20 @@ public class Outtake implements SubSystem {
         return new InstantAction(() -> {
             outtake.setPower(Globals.Outtake.POWER_OFF);
             state = OuttakeState.STOPPED;
-            servo.setPosition(Globals.Outtake.OUTTAKE_SERVO_CLOSED);
+           // servo.setPosition(Globals.Outtake.OUTTAKE_SERVO_CLOSED);
+        });
+    }
+    public InstantAction runBuffer(){
+        timer.reset();
+        return new InstantAction(() -> {
+           buffer.setTargetPosition(
+                   (int) Math.floor(Globals.Outtake.TICKS_PER_REVOLUTION_5202 / 3 + buffer.getCurrentPosition())
+           );
+           buffer.setPower(1);
+          /* while (timer.time() < 500){
+
+           }
+           buffer.setPower(0);*/
         });
     }
 
