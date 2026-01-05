@@ -12,7 +12,7 @@ public class Globals {
     public static final class Outtake {
         public static final String OUTTAKE_MOTOR = "outtakeMotor";
         public static final String BUFFER = "outtakeMotor2";
-        public static final double TICKS_PER_REVOLUTION_5202 = 384.5;
+        public static final double TICKS_PER_REVOLUTION_5202 = 537.7;
         public static final double TICKS_PER_REVOLUTION_5203 = 537.7;
         public static final String OUTTAKE_SERVO = "outtakeServo";
         public static final double POWER_OFF = 0;
